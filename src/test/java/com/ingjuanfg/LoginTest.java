@@ -26,10 +26,28 @@ public class LoginTest {
         //ARRANGE
         driver.get("https://teststore.automationtesting.co.uk/index.php");
 
+        String firstName = "John";
+        String lastName = "Doe";
+        String email = "test104@email.com";
+        String password = "#7G42OV^ndRv";
+
         WebElement buttonSignIn = driver.findElement(By.xpath("//*[@id=\"_desktop_user_info\"]//div[@class=\"user-info\"]//a[@title=\"Log in to your customer account\"]"));
         buttonSignIn.click();
         WebElement buttonCreateAccount = driver.findElement(By.xpath("//*[@id=\"main\"]//div[@class=\"no-account\"]//a[@data-link-action=\"display-register-form\"]"));
         buttonCreateAccount.click();
+
+        WebElement firstNameInput = driver.findElement(By.xpath("//form[@id=\"customer-form\"]//child::div[@class=\"form-group row \"]//input[@id=\"field-firstname\"]"));
+        WebElement lastNameInput = driver.findElement(By.xpath("//form[@id=\"customer-form\"]//child::div[@class=\"form-group row \"]//input[@id=\"field-lastname\"]"));
+        WebElement emailInput = driver.findElement(By.xpath("//form[@id=\"customer-form\"]//child::div[@class=\"form-group row \"]//input[@id=\"field-email\"]"));
+        WebElement passwordInput = driver.findElement(By.xpath("//form[@id=\"customer-form\"]//child::div[@class=\"form-group row \"]//input[@id=\"field-password\"]"));
+        WebElement tycInput = driver.findElement(By.xpath("//form[@id=\"customer-form\"]//child::div[@class=\"form-group row \"]//input[@name=\"psgdpr\"]"));
+        WebElement buttonSubmit = driver.findElement(By.xpath("//form[@id=\"customer-form\"]/div/following-sibling::footer/button[@data-link-action=\"save-customer\"]"));
+        firstNameInput.sendKeys(firstName);
+        lastNameInput.sendKeys(lastName);
+        emailInput.sendKeys(email);
+        passwordInput.sendKeys(password);
+        tycInput.click();
+        buttonSubmit.click();
     }
 
     //@AfterEach
