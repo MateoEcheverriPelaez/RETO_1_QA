@@ -26,9 +26,10 @@ public class LoginTest {
         //ARRANGE
         driver.get("https://teststore.automationtesting.co.uk/index.php");
 
+        int randomNumber = (int)(Math.random()*100+1);
         String firstName = "John";
         String lastName = "Doe";
-        String email = "test104@email.com";
+        String email = "test" + Integer.toString(randomNumber) + "@email.com";
         String password = "#7G42OV^ndRv";
 
         WebElement buttonSignIn = driver.findElement(By.xpath("//*[@id=\"_desktop_user_info\"]//div[@class=\"user-info\"]//a[@title=\"Log in to your customer account\"]"));
