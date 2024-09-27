@@ -1,6 +1,7 @@
 package com.ingjuanfg;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -23,21 +24,16 @@ public class LoginTest {
     @Test
     public void testLoginExitoso() {
         //ARRANGE
-        driver.get("https://www.saucedemo.com/");
-        //ACT
-        WebElement inputUser = driver.findElement(By.id("user-name"));
-        WebElement inputPassword = driver.findElement(By.id("password"));
-        WebElement buttonLogin = driver.findElement(By.id("login-button"));
-        inputUser.sendKeys("standard_user");
-        inputPassword.sendKeys("secret_sauce");
-        buttonLogin.click();
-        //ASSERT
-        WebElement pageTitle = driver.findElement(By.xpath("//span[@data-test='title']"));
-        assertEquals("Products", pageTitle.getText());
+        driver.get("https://teststore.automationtesting.co.uk/index.php");
+
+        WebElement buttonSignIn = driver.findElement(By.xpath("//*[@id=\"_desktop_user_info\"]//div[@class=\"user-info\"]//a[@title=\"Log in to your customer account\"]"));
+        buttonSignIn.click();
+        WebElement buttonCreateAccount = driver.findElement(By.xpath("//*[@id=\"main\"]//div[@class=\"no-account\"]//a[@data-link-action=\"display-register-form\"]"));
+        buttonCreateAccount.click();
     }
 
-    @AfterEach
-    public void configuracionFinal(){
-        driver.close();
-    }
+    //@AfterEach
+    //public void configuracionFinal(){
+    //    driver.close();
+    //}
 }
