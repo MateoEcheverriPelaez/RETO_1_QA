@@ -49,10 +49,16 @@ public class LoginTest {
         passwordInput.sendKeys(password);
         tycInput.click();
         buttonSubmit.click();
+
+        //ASSERT
+        WebElement nameSpan = driver.findElement(By.xpath("//div[@class=\"container\"]//div[@class=\"user-info\"]//child::span[@class=\"hidden-sm-down\"]"));
+        WebElement buttonLogout = driver.findElement(By.xpath("//div[@class=\"container\"]//div[@class=\"user-info\"]//child::a[@class=\"logout hidden-sm-down\"]"));
+        Assertions.assertEquals(firstName + " " + lastName, nameSpan.getText());
+        buttonLogout.click();
     }
 
-    //@AfterEach
-    //public void configuracionFinal(){
-    //    driver.close();
-    //}
+    @AfterEach
+    public void configuracionFinal(){
+        driver.close();
+    }
 }
